@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import { parseChatGptSidebarConversationLink, SELECTORS } from "./chatgptPage.ts";
 
 describe("ChatGPT page selectors", () => {
+  it("targets only the main composer for prompt injection", () => {
+    expect(SELECTORS.promptInput).toBe("#prompt-textarea");
+  });
+
   it("includes current account menu selectors used by ChatGPT settings", () => {
     expect(SELECTORS.accountMenuButton).toContain('[data-testid="accounts-profile-button"]');
     expect(SELECTORS.accountMenuButton).toContain(
